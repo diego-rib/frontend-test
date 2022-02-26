@@ -3,10 +3,15 @@ import PropTypes from 'prop-types';
 
 function PlanetRow({ planet, fields }) {
   return (
-    <tr>
+    <tr data-testid={ `planet-row-${planet.name}` }>
       {
         fields.map((field) => (
-          <td key={ `${field}-${planet.name}` }>{planet[field]}</td>
+          <td
+            key={ `${field}-${planet.name}` }
+            data-testid={ `${field}-${planet.name}` }
+          >
+            {planet[field]}
+          </td>
         ))
       }
     </tr>
