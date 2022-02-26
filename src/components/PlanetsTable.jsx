@@ -5,15 +5,7 @@ import PlanetRow from './PlanetRow';
 import Loading from './Loading';
 import Error from './Error';
 
-function formatFieldName(fieldName) {
-  let name = fieldName;
-
-  if (fieldName.includes('_')) {
-    name = fieldName.replace('_', ' ');
-  }
-
-  return `${name[0].toUpperCase()}${name.slice(1)}`;
-}
+import formatFieldName from '../helpers/formatFieldName';
 
 function PlanetsTable() {
   const { data, fields, loading, error } = usePlanetsContext();
