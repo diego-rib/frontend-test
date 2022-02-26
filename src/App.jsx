@@ -1,8 +1,14 @@
+import React from 'react';
+
+import PlanetsContextProvider from './context/PlanetsContextProvider';
+
 function App() {
   return (
-    <div>
-      <h1>Star Wars Planets</h1>
-    </div>
+    <PlanetsContextProvider>
+      <div>
+        <h1>Star Wars Planets</h1>
+      </div>
+    </PlanetsContextProvider>
   );
 }
 
