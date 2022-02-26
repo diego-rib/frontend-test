@@ -1,4 +1,11 @@
 {
-  "extends": "trybe-frontend",
-  "parser": "@babel/eslint-parser"
+  "extends": ["trybe-frontend"],
+  "parser": "@babel/eslint-parser",
+  "parserOptions": {
+    "requireConfigFile": false,
+    "ecmaFeatures": {
+      "jsx": true
+    },
+    "sourceType": "module"
+  }
 }
