@@ -77,4 +77,14 @@ describe("Testa se o componente PlanetsTable:", () => {
       expect(population).toBeInTheDocument();
     }
   });
+
+  it("renderiza a mensagem de erro corretamente", async () => {
+    global.fetch = jest.fn(() => Promise.reject());
+
+    customRender(<PlanetsTable />);
+
+    const errorMessage = await screen.findByText('Houve um erro ao se conectar com o servidor.');
+
+    expect(errorMessage).toBeInTheDocument();
+  });
 });
