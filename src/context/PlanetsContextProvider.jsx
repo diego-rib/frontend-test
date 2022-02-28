@@ -7,8 +7,12 @@ import getAllPlanets from '../helpers/planetsApi';
 
 function PlanetsContextProvider({ children }) {
   const [data, setData] = useState([]);
+  const [rawData, setRawData] = useState([]);
   const [loading, setLoading] = useState(true);
   const [fields, setFields] = useState([]);
+
+  // Estado dos filtros
+  const [nameFilter, setNameFilter] = useState('');
 
   const [error, setError] = useState(false);
 
@@ -28,13 +32,32 @@ function PlanetsContextProvider({ children }) {
       (field) => field !== 'residents',
     );
     setFields(allFields);
-  }, [data]);
+    setRawData(data);
+  }, [data, fields]);
+
+  useEffect(() => {
+    if (nameFilter.trim() === '') {
+      setData(rawData);
+      return;
+    }
+
+    const filteredPlanets = rawData
+      .filter(({ name: planetName }) => planetName.includes(nameFilter));
+
+    setData(filteredPlanets);
+  }, [rawData, nameFilter]);
 
   const contextValue = {
     data,
     fields,
     loading,
     error,
+    filters: {
+      filterByName: {
+        name: nameFilter,
+      },
+    },
+    setNameFilter,
   };
 
   return (

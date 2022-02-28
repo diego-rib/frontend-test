@@ -9,7 +9,6 @@ async function getAllPlanets({ setData, setLoading, setError }) {
     setData(data.results);
     setLoading(false);
   } catch (error) {
-    console.log(error);
     setError(true);
   }
 }
