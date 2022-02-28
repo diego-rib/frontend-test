@@ -8,6 +8,13 @@ function NumericFilter() {
   const [comparison, setComparison] = useState('maior que');
   const [value, setValue] = useState(0);
 
+  function submitFilters() {
+    submitNumericFilter({ column, comparison, value });
+    setColumn('');
+    setComparison('maior que');
+    setValue(0);
+  }
+
   if (column === '' && avaliableColumns.length > 0) {
     setColumn(avaliableColumns[0]);
   }
@@ -17,7 +24,7 @@ function NumericFilter() {
       <label htmlFor="column">
         Filtrar por coluna:
         <select
-          name="column"
+          id="column"
           onChange={ ({ target }) => setColumn(target.value) }
         >
           {
@@ -35,7 +42,7 @@ function NumericFilter() {
       <label htmlFor="comparison">
         comparação:
         <select
-          name="comparison"
+          id="comparison"
           onChange={ ({ target }) => setComparison(target.value) }
         >
           <option value="maior que">maior que</option>
@@ -46,7 +53,7 @@ function NumericFilter() {
       <label htmlFor="value">
         valor:
         <input
-          name="value"
+          id="value"
           type="number"
           value={ value }
           onChange={ ({ target }) => setValue(target.value) }
@@ -54,7 +61,7 @@ function NumericFilter() {
       </label>
       <button
         type="button"
-        onClick={ () => submitNumericFilter({ column, comparison, value }) }
+        onClick={ submitFilters }
       >
         Filtrar
       </button>

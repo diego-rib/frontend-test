@@ -81,6 +81,11 @@ function PlanetsContextProvider({ children }) {
     setAvaliableColumns(unusedColumns);
   }, [filterByNumericValues]);
 
+  function resetAllFilters() {
+    setNameFilter('');
+    setNumericFilters([]);
+  }
+
   const contextValue = {
     data,
     fields,
@@ -95,6 +100,7 @@ function PlanetsContextProvider({ children }) {
     setNameFilter,
     avaliableColumns,
     submitNumericFilter,
+    resetAllFilters,
   };
 
   return (
