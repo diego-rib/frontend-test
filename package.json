@@ -45,5 +45,10 @@
   "devDependencies": {
     "@babel/preset-react": "^7.16.7",
     "eslint-plugin-sonarjs": "^0.12.0"
+  },
+  "jest": {
+    "collectCoverageFrom": [
+      "!src/index.jsx"
+    ]
   }
 }
