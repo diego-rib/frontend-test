@@ -1,9 +1,9 @@
 import { screen, within } from '@testing-library/react';
 import { act } from 'react-dom/test-utils';
 
-import customRender from './customRender';
-import apiMock from './apiMock';
-import filteredData from './filteredApiData';
+import customRender from './utils/customRender';
+import apiMock from './utils/apiMock';
+import filteredData from './utils/filteredApiData';
 
 import PlanetsTable from '../components/PlanetsTable';
 

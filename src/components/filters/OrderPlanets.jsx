@@ -11,19 +11,23 @@ function OrderPlanets() {
 
   return (
     <div>
-      <select
-        onChange={ ({ target }) => setOrderColumn(target.value) }
-        value={ column }
-      >
-        { fields.map((field) => (
-          <option
-            key={ `order-${field}` }
-            value={ field }
-          >
-            {field}
-          </option>
-        )) }
-      </select>
+      <label htmlFor="order-column">
+        Ordenar por
+        <select
+          id="order-column"
+          onChange={ ({ target }) => setOrderColumn(target.value) }
+          value={ column }
+        >
+          { fields.map((field) => (
+            <option
+              key={ `order-${field}` }
+              value={ field }
+            >
+              {field}
+            </option>
+          )) }
+        </select>
+      </label>
       <label htmlFor="ASC">
         Ascending
         <input

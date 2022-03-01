@@ -2,7 +2,7 @@ import { render, screen, within } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { act } from 'react-dom/test-utils';
 
-import apiMock from './apiMock';
+import apiMock from './utils/apiMock';
 
 import App from '../App';
 
