@@ -1,9 +1,10 @@
 import React from 'react';
 import { usePlanetsContext } from '../context/PlanetsContext';
-import FilterList from './FilterList';
+import FilterList from './filters/FilterList';
 
-import NameFilter from './NameFilter';
-import NumericFilter from './NumericFilter';
+import NameFilter from './filters/NameFilter';
+import NumericFilter from './filters/NumericFilter';
+import OrderPlanets from './filters/OrderPlanets';
 
 function Filters() {
   const { resetAllFilters } = usePlanetsContext();
@@ -16,6 +17,7 @@ function Filters() {
       </button>
       <FilterList />
       <NumericFilter />
+      <OrderPlanets />
     </div>
   );
 }
