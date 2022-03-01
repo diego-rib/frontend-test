@@ -70,11 +70,11 @@ function numberSort(planets, column, type) {
   return descending(planetsCopy, column);
 }
 
+const fieldsContainingStrings = ['name', 'climate', 'terrain', 'films', 'url'];
+
 export default function orderByField(planets, { column, sort }) {
-  switch (column) {
-  case 'name' || 'climate' || 'terrain' || 'url':
+  if (fieldsContainingStrings.includes(column)) {
     return stringSort(planets, column, sort);
-  default:
-    return numberSort(planets, column, sort);
   }
+  return numberSort(planets, column, sort);
 }
