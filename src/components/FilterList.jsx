@@ -16,7 +16,10 @@ function FilterList() {
       <h3>Filtros utilizados:</h3>
       {
         filterByNumericValues.map((filter, index) => (
-          <div key={ `used-filter-${index}` }>
+          <div
+            key={ `used-filter-${index}` }
+            data-testid={ `used-filter-${filter.column}` }
+          >
             <button
               type="button"
               onClick={ () => removeFilter(index) }
