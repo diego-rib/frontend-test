@@ -27,6 +27,10 @@ function PlanetsContextProvider({ children }) {
   const [avaliableColumns, setAvaliableColumns] = useState([]);
   const [filterByNumericValues, setNumericFilters] = useState([]);
 
+  // Ordenação de colunas ASC / DESC
+  const [orderColumn, setOrderColumn] = useState('name');
+  const [orderSort, setOrderSort] = useState('ASC');
+
   // Adiciona um novo filtro numérico
   function submitNumericFilter(numericFilter) {
     const newNumericFilters = [...filterByNumericValues, numericFilter];
@@ -103,12 +107,18 @@ function PlanetsContextProvider({ children }) {
         name: nameFilter,
       },
       filterByNumericValues,
+      order: {
+        column: orderColumn,
+        sort: orderSort,
+      },
     },
     setNameFilter,
     avaliableColumns,
     submitNumericFilter,
     removeFilter,
     resetAllFilters,
+    setOrderColumn,
+    setOrderSort,
   };
 
   return (

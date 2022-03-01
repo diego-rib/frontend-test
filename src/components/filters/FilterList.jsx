@@ -1,5 +1,5 @@
 import React from 'react';
-import { usePlanetsContext } from '../context/PlanetsContext';
+import { usePlanetsContext } from '../../context/PlanetsContext';
 
 function FilterList() {
   const {

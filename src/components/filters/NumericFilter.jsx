@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { usePlanetsContext } from '../context/PlanetsContext';
+import { usePlanetsContext } from '../../context/PlanetsContext';
 
 function NumericFilter() {
   const { avaliableColumns, submitNumericFilter } = usePlanetsContext();
