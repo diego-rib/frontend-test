@@ -1,10 +1,13 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 import PropTypes from 'prop-types';
 
 import { PlanetsContext } from './PlanetsContext';
 
 import getAllPlanets from '../helpers/planetsApi';
 import filterByColumns from '../helpers/filterPlanets';
+
+const allColumns = [
+  'population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water'];
 
 function PlanetsContextProvider({ children }) {
   const [data, setData] = useState([]);
@@ -21,15 +24,26 @@ function PlanetsContextProvider({ children }) {
   const [nameFilter, setNameFilter] = useState('');
 
   // Filtros numéricos
-  const allColumns = [
-    'population', 'orbital_period', 'diameter', 'rotation_period', 'surface_water'];
   const [avaliableColumns, setAvaliableColumns] = useState([]);
   const [filterByNumericValues, setNumericFilters] = useState([]);
 
+  // Adiciona um novo filtro numérico
   function submitNumericFilter(numericFilter) {
     const newNumericFilters = [...filterByNumericValues, numericFilter];
 
     setNumericFilters(newNumericFilters);
+  }
+
+  // Remove filtro selecionado
+  function removeFilter(filterIndex) {
+    const newFiltersList = filterByNumericValues
+      .filter((_filter, index) => index !== filterIndex);
+    setNumericFilters(newFiltersList);
+  }
+
+  // Reseta todos os filtros numéricos
+  function resetAllFilters() {
+    setNumericFilters([]);
   }
 
   // Pega os dados da api quando o componente é montado
@@ -69,22 +83,15 @@ function PlanetsContextProvider({ children }) {
   }, [rawData, nameFilter, filterByNumericValues]);
 
   // Atualiza os campos disponíveis para serem usados
-  const allAvaliableColumns = useRef(allColumns);
   useEffect(() => {
     const usedColumns = filterByNumericValues
       .map(({ column }) => column);
 
-    const unusedColumns = allAvaliableColumns
-      .current
+    const unusedColumns = allColumns
       .filter((column) => !usedColumns.includes(column));
 
     setAvaliableColumns(unusedColumns);
   }, [filterByNumericValues]);
-
-  function resetAllFilters() {
-    setNameFilter('');
-    setNumericFilters([]);
-  }
 
   const contextValue = {
     data,
@@ -100,6 +107,7 @@ function PlanetsContextProvider({ children }) {
     setNameFilter,
     avaliableColumns,
     submitNumericFilter,
+    removeFilter,
     resetAllFilters,
   };
 

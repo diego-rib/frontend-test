@@ -7,16 +7,28 @@ function NumericFilter() {
   const [column, setColumn] = useState('');
   const [comparison, setComparison] = useState('maior que');
   const [value, setValue] = useState(0);
+  const [warning, setWarning] = useState(false);
 
-  function submitFilters() {
-    submitNumericFilter({ column, comparison, value });
+  // Volta o componente ao estado inicial
+  function resetFilterState() {
+    setWarning(false);
     setColumn('');
     setComparison('maior que');
     setValue(0);
   }
 
-  if (column === '' && avaliableColumns.length > 0) {
-    setColumn(avaliableColumns[0]);
+  function submitFilters() {
+    if (column === '') {
+      setWarning(true);
+      return;
+    }
+
+    resetFilterState();
+    submitNumericFilter({ column, comparison, value });
+  }
+
+  if (avaliableColumns.length === 0) {
+    return <h1>Todos os filtros foram utilizados</h1>;
   }
 
   return (
@@ -26,7 +38,9 @@ function NumericFilter() {
         <select
           id="column"
           onChange={ ({ target }) => setColumn(target.value) }
+          value={ column }
         >
+          <option value="">{}</option>
           {
             avaliableColumns.map((avaliableColumn) => (
               <option
@@ -65,6 +79,7 @@ function NumericFilter() {
       >
         Filtrar
       </button>
+      { warning && <p>Insira uma coluna a ser filtrada</p> }
     </div>
   );
 }

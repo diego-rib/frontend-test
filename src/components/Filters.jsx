@@ -1,5 +1,6 @@
 import React from 'react';
 import { usePlanetsContext } from '../context/PlanetsContext';
+import FilterList from './FilterList';
 
 import NameFilter from './NameFilter';
 import NumericFilter from './NumericFilter';
@@ -9,10 +10,11 @@ function Filters() {
 
   return (
     <div>
+      <NameFilter />
       <button type="button" onClick={ resetAllFilters }>
         Reseta filtros
       </button>
-      <NameFilter />
+      <FilterList />
       <NumericFilter />
     </div>
   );
