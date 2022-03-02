@@ -32,7 +32,7 @@ function FilterList() {
                 className="remove-filter-button"
                 onClick={ () => removeFilter(index) }
               >
-                <RiDeleteBin2Line color="white" size="22px" />
+                <RiDeleteBin2Line color="red" size="22px" />
               </button>
             </div>
           ))

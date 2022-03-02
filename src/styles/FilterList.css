@@ -3,8 +3,8 @@
   background-color: rgba(255, 255, 255, 0.3);
   border: none;
   border-radius: 10px;
-  margin: 0 auto 20px;
-  padding: 7px 40px;
+  margin: 0 auto 40px;
+  padding: 0 40px;
   text-align: center;
   width: fit-content;
 }
@@ -15,9 +15,9 @@
 }
 
 .all-used-filters-list {
+  align-items: center;
   display: flex;
   flex-flow: column nowrap;
-  align-items: center;
 }
 
 .filters-list-filter-info {
@@ -29,7 +29,7 @@
   flex-flow: row nowrap;
   justify-content: space-between;
   margin: 10px 0;
-  padding: 7px 10px;
+  padding: 4px 14px;
   width: 100%;
 }
 
