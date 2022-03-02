@@ -1,6 +1,8 @@
 import React from 'react';
 import { usePlanetsContext } from '../../context/PlanetsContext';
 
+import '../../styles/OrderPlanets.css';
+
 function OrderPlanets() {
   const {
     filters: { order: { column, sort } },
@@ -10,7 +12,7 @@ function OrderPlanets() {
   } = usePlanetsContext();
 
   return (
-    <div>
+    <div className="order-planets-filter">
       <label htmlFor="order-column">
         Ordenar por
         <select
@@ -29,7 +31,6 @@ function OrderPlanets() {
         </select>
       </label>
       <label htmlFor="ASC">
-        Ascending
         <input
           type="radio"
           name="sort"
@@ -38,9 +39,9 @@ function OrderPlanets() {
           onChange={ () => setOrderSort('ASC') }
           checked={ sort === 'ASC' }
         />
+        Crescente
       </label>
       <label htmlFor="DESC">
-        Descending
         <input
           type="radio"
           name="sort"
@@ -49,6 +50,7 @@ function OrderPlanets() {
           onChange={ () => setOrderSort('DESC') }
           checked={ sort === 'DESC' }
         />
+        Decrescente
       </label>
     </div>
   );

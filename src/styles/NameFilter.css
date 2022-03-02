@@ -1,0 +1,11 @@
+.name-filter {
+  width: fit-content;
+}
+
+.name-filter > label > input {
+  border: none;
+  border-radius: 3px;
+  margin: 0 50px 0 5px;
+  padding: 4px;
+  width: 300px;
+}

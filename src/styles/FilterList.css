@@ -1,0 +1,45 @@
+.filters-list-container {
+  display: flex;
+  background-color: rgba(255, 255, 255, 0.3);
+  border: none;
+  border-radius: 10px;
+  margin: 0 auto 40px;
+  padding: 0 40px;
+  text-align: center;
+  width: fit-content;
+}
+
+.filters-list-container > h3 {
+  align-self: center;
+  margin-right: 30px;
+}
+
+.all-used-filters-list {
+  align-items: center;
+  display: flex;
+  flex-flow: column nowrap;
+}
+
+.filters-list-filter-info {
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.3);
+  border: none;
+  border-radius: 10px;
+  display: flex;
+  flex-flow: row nowrap;
+  justify-content: space-between;
+  margin: 10px 0;
+  padding: 4px 14px;
+  width: 100%;
+}
+
+.filters-list-filter-info > .remove-filter-button {
+  background-color: rgba(0, 0, 0, 0);
+  border: none;
+  margin-left: 20px;
+  padding: 5px 5px;
+}
+
+.filters-list-filter-info > .remove-filter-button:hover {
+  cursor: pointer;
+}

@@ -9,16 +9,22 @@ function PlanetRow({ planet, fields }) {
       {
         fields.map((field) => {
           let content = planet[field];
+          let classname = '';
+
           if (field === 'created' || field === 'edited') {
             content = formatDate(content);
-          }
-          if (field === 'films') {
+            classname = 'one-line-field';
+          } else if (field === 'url') {
+            classname = 'one-line-field';
+          } else if (field === 'films') {
             content = content.join(', ');
           }
+
           return (
             <td
               key={ `${field}-${planet.name}` }
               data-testid={ `${field}-${planet.name}` }
+              className={ classname }
             >
               {content}
             </td>

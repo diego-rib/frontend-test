@@ -1,5 +1,9 @@
 import React from 'react';
+import { RiDeleteBin2Line } from 'react-icons/ri';
+
 import { usePlanetsContext } from '../../context/PlanetsContext';
+
+import '../../styles/FilterList.css';
 
 function FilterList() {
   const {
@@ -12,26 +16,28 @@ function FilterList() {
   }
 
   return (
-    <div>
+    <div className="filters-list-container">
       <h3>Filtros utilizados:</h3>
-      {
-        filterByNumericValues.map((filter, index) => (
-          <div
-            key={ `used-filter-${index}` }
-            data-testid={ `used-filter-${filter.column}` }
-          >
-            <button
-              type="button"
-              onClick={ () => removeFilter(index) }
+      <div className="all-used-filters-list">
+        {
+          filterByNumericValues.map((filter, index) => (
+            <div
+              key={ `used-filter-${index}` }
+              data-testid={ `used-filter-${filter.column}` }
+              className="filters-list-filter-info"
             >
-              X
-            </button>
-            <p>{filter.column}</p>
-            <p>{filter.comparison}</p>
-            <p>{filter.value}</p>
-          </div>
-        ))
-      }
+              <p>{`${filter.column} ${filter.comparison} ${filter.value}`}</p>
+              <button
+                type="button"
+                className="remove-filter-button"
+                onClick={ () => removeFilter(index) }
+              >
+                <RiDeleteBin2Line color="red" size="22px" />
+              </button>
+            </div>
+          ))
+        }
+      </div>
     </div>
   );
 }
