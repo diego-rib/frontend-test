@@ -1,8 +1,10 @@
 import React from 'react';
 
+import '../../styles/Loading.css';
+
 function Loading() {
   return (
-    <h1>Loading......</h1>
+    <h1 className="loading-message">Loading......</h1>
   );
 }
 
