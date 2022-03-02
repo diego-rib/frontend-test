@@ -173,7 +173,7 @@ describe("Testa se o filtro numérico:", () => {
       usedFilters = await screen.findAllByTestId(/used-filter/i);
       expect(usedFilters.length).toBe(1);
 
-      const removeFilterButton = await screen.findByRole('button', { name: /x/i });
+      const removeFilterButton = await within(usedFilters[0]).findByRole('button');
 
       userEvent.click(removeFilterButton);
 
