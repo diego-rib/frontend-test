@@ -1,0 +1,27 @@
+.numeric-filter-container select {
+  margin: 0 5px 0 5px;
+}
+
+input[type=number]::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+}
+
+.numeric-filter-container input {
+  border: none;
+  border-radius: 3px;
+  margin-left: 5px;
+  padding: 3px 3px 3px 7px;
+  width: 110px;
+}
+
+.submit-numeric-filter-button {
+  background-color: rgb(30, 135, 196);
+  border: none;
+  border-radius: 3px;
+  color: #fff;
+  font-size: 20px;
+  font-weight: bold;
+  letter-spacing: 2px;
+  margin-bottom: 10px;
+  padding: 7px 25px;
+}

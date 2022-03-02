@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { usePlanetsContext } from '../../context/PlanetsContext';
 
+import '../../styles/NumericFilter.css';
+
 function NumericFilter() {
   const { avaliableColumns, submitNumericFilter } = usePlanetsContext();
 
@@ -32,55 +34,58 @@ function NumericFilter() {
   }
 
   return (
-    <div>
-      <label htmlFor="column">
-        Filtrar por coluna:
-        <select
-          id="column"
-          onChange={ ({ target }) => setColumn(target.value) }
-          value={ column }
-        >
-          <option value="">{}</option>
-          {
-            avaliableColumns.map((avaliableColumn) => (
-              <option
-                value={ avaliableColumn }
-                key={ `column-filter-${avaliableColumn}` }
-              >
-                {avaliableColumn}
-              </option>
-            ))
-          }
-        </select>
-      </label>
-      <label htmlFor="comparison">
-        comparação:
-        <select
-          id="comparison"
-          onChange={ ({ target }) => setComparison(target.value) }
-        >
-          <option value="maior que">maior que</option>
-          <option value="menor que">menor que</option>
-          <option value="igual a">igual a</option>
-        </select>
-      </label>
-      <label htmlFor="value">
-        valor:
-        <input
-          id="value"
-          type="number"
-          value={ value }
-          onChange={ ({ target }) => setValue(target.value) }
-        />
-      </label>
+    <>
+      <div className="numeric-filter-container">
+        <label htmlFor="column">
+          Filtrar por coluna:
+          <select
+            id="column"
+            onChange={ ({ target }) => setColumn(target.value) }
+            value={ column }
+          >
+            <option value="">{}</option>
+            {
+              avaliableColumns.map((avaliableColumn) => (
+                <option
+                  value={ avaliableColumn }
+                  key={ `column-filter-${avaliableColumn}` }
+                >
+                  {avaliableColumn}
+                </option>
+              ))
+            }
+          </select>
+        </label>
+        <label htmlFor="comparison">
+          comparação:
+          <select
+            id="comparison"
+            onChange={ ({ target }) => setComparison(target.value) }
+          >
+            <option value="maior que">maior que</option>
+            <option value="menor que">menor que</option>
+            <option value="igual a">igual a</option>
+          </select>
+        </label>
+        <label htmlFor="value">
+          valor:
+          <input
+            id="value"
+            type="number"
+            value={ value }
+            onChange={ ({ target }) => setValue(target.value) }
+          />
+        </label>
+      </div>
       <button
         type="button"
         onClick={ submitFilters }
+        className="submit-numeric-filter-button"
       >
         Filtrar
       </button>
       { warning && <p>Insira uma coluna a ser filtrada</p> }
-    </div>
+    </>
   );
 }
 
